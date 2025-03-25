@@ -1,16 +1,20 @@
 import axios from "axios";
-
+import Navbar from "./Navbar";
 import {useEffect, useState } from "react";
 import { useNavigate , Link} from "react-router-dom";
+import Footer from "./Footer"
+import Carousel from "./Carousel";
+
+
 
 const GetProducts = () => {
 
-    let [Products,setProducts]= useState([])
+    let [products,setProducts]= useState([])
     let [error, setError] = useState("")
     let [loading , setLoading] = useState("")
     let [filteredProducts, setFilteredProducts] = useState([])
 
-    const img_url = "https://Lido.pythonanywhere.com/static/images/"
+    const img_url = "https://Lido.pythonanywhere.com/static/images/";
     const navigate = useNavigate();
     
 
@@ -19,11 +23,13 @@ const GetProducts = () => {
         setLoading("Please wait ... receiving products...");
         try {
             const response = await axios.get("https://Lido.pythonanywhere.com/api/getproducts");
+            console.log (response)
             setProducts(response.data);
             setFilteredProducts(response.data);
             setLoading("");
             
         } catch (error) {
+            console.log(error)
             setLoading("");
             setError(error.message);
             
@@ -32,7 +38,7 @@ const GetProducts = () => {
     }
 
     const handleSearch = (value) => {
-        const filtered = Products &&  Products.filter((product) => 
+        const filtered = products &&  products.filter((product) => 
             product.product_name.toLowerCase().includes(value.toLowerCase())
         )
         setFilteredProducts(filtered);
@@ -48,6 +54,8 @@ const GetProducts = () => {
             <b className="text-warning">{loading}</b>
             <b className="text-danger">{error}</b>
             {/* navbar */}
+            <Navbar/>
+            
             
             <nav className="m-4">
                 
@@ -61,9 +69,12 @@ const GetProducts = () => {
 
             </nav>
             {/* carousel */}
+            <Carousel/>
+            
+            
             
             {/* content */}
-            <div className="justify-content-center m-3">
+            <div className="justify-content-center m-3" id="macho">
                 <div className="col-md-6">
                     <input type="text" className="form-control" placeholder="Search for a product by name" onChange={(e) =>handleSearch(e.target.value)}/>
                 </div>
@@ -87,6 +98,9 @@ const GetProducts = () => {
             ))}
            
             {/* footer */}
+            <Footer/>
+            
+            
             
         </div>
      );

@@ -13,11 +13,11 @@ const navbar = () => {
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         
                          <div class="navbar-nav">
-                            <Link to="AddProducts.jsx" class="nav-link">Add products</Link>
+                            <Link to="AddProducts" class="nav-link">Add products</Link>
                             <Link to="#" class="nav-link"></Link>
 
-                            <Link to="SignIn.jsx" class="nav-link"> Sign in</Link>
-                            <Link to="Signup.jsx" class="nav-link">Sign up</Link>
+                            <Link to="SignIn" class="nav-link"> Sign in</Link>
+                            <Link to="Signup" class="nav-link">Sign up</Link>
                          </div>
                     </div>
                     
