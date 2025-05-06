@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import { useLocation,Link } from "react-router-dom";
+import { useLocation} from "react-router-dom";
+import Navbar from "./Navbar";
 
 const SingleProduct = () => {
 
@@ -37,18 +38,10 @@ const SingleProduct = () => {
     
     return ( 
         <div>
-            <div className="row justify-content-center mt-3">
-            <nav className="m-4">
-                
-                <Link className="btn btn-dark mx-2" to = "/signin">sign in</Link>
-                <Link className="btn btn-dark mx-2" to = "/signup">signup</Link>
-                <Link className="btn btn-dark mx-2" to = "/addproducts">Add Products</Link>
-                <Link className="btn btn-dark mx-2" to = "/Home">Home</Link>
 
-                
-
-
-            </nav>
+            <div className="row justify-content-center ">
+            
+            <Navbar/>
                 
                     <div className="col-md-3 card shadow">
                         <img src={img_url + product.product_photo} alt="" />

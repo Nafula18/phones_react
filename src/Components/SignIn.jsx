@@ -22,7 +22,7 @@ const SignIn = () => {
             data.append("username", username);
             data.append("password", password)
 
-            const response = await axios.post("https://Lido.pythonanywhere.com/api/ssignin", data) 
+            const response = await axios.post("https://Lido.pythonanywhere.com/api/signin", data) 
             if (response.data.user){
                 localStorage.setItem("user",JSON.stringify(response.data.user))
                 navigate ("/");
@@ -43,27 +43,30 @@ const SignIn = () => {
     }
 
     return ( 
-        <div className="row justify-content-center mt-4">
-            <div className="col-md-6 card shadow p-4">
-                <h2>Sign In</h2>
-                <b className="text-danger">{error}</b>
-                <b className="text-warning">{loading}</b>
+    <div className="">
 
-                <form onSubmit={submitForm}>
+            <div className="row justify-content-center mt-4 ">
+                        <div id="densel" className="col-md-6 card shadow p-4">
+                            <h2 >Sign In</h2>
+                            <b className="text-danger">{error}</b>
+                            <b className="text-warning">{loading}</b>
 
-                    <input type="text" placeholder="Enter username" required className="form-control" 
-                     onChange={(e) => setUsername(e.target.value)}
-                     /> <br />
-                    <input type="password" placeholder="Enter password" required className="form-control" 
-                    onChange={(e) => setPassword (e.target.value)}/>
-                    <br />
-                    <button className="btn btn-primary" type="submit">Sign In</button>
-                </form>
-                <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
-            
-                
-            </div>
-        </div>
+                            <form  onSubmit={submitForm}>
+
+                                <input type="text" placeholder="Enter username" id="col" required className="form-control" 
+                                onChange={(e) => setUsername(e.target.value)}
+                                /> <br />
+                                <input type="password" placeholder="Enter password" id="col" required className="form-control" 
+                                onChange={(e) => setPassword (e.target.value)}/>
+                                <br />
+                                <button className="btn btn-primary" type="submit">Sign In</button>
+                            </form>
+                            <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+                        
+                            
+                        </div>
+                    </div>
+    </div>
      );
 }
  

@@ -1,6 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import {useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 
 
@@ -20,7 +22,8 @@ const AddProducts = () => {
         }
     };
 
-    useEffect(() => checkUser(), [user])
+    useEffect(() => checkUser(), [user]);
+    let fileinputref = useRef(null)
 
     let [loading, setLoading] = useState("");
     let [error, setError] = useState("");
@@ -45,6 +48,7 @@ const AddProducts = () => {
             setProductCost("");
             setProductDesc("");
             setProductName("");
+            fileinputref.current.value = "";
 
         } catch (error) {
             setLoading('')
@@ -56,18 +60,10 @@ const AddProducts = () => {
 
 
     return ( 
+        
         <div className="row justify-content-center mt-4">
-            <nav className="m-4">
-                
-                <Link className="btn btn-dark mx-2" to = "/signin">sign in</Link>
-                <Link className="btn btn-dark mx-2" to = "/signup">signup</Link>
-                <Link className="btn btn-dark mx-2" to = "/addproducts">Add Products</Link>
-                <Link className="btn btn-dark mx-2" to = "/">Home</Link>
-
-                
-
-
-            </nav>
+            
+            <Navbar/>
 
             <div className="col-md-6 card shadow p-4">
                 
@@ -78,6 +74,7 @@ const AddProducts = () => {
               <form onSubmit={submitForm}>
                 <input 
                 type="text"
+                
                 placeholder="Enter Product Name" 
                 required
                 className="form-control"
@@ -109,13 +106,14 @@ const AddProducts = () => {
                 /> 
                   
                 <br /> 
-                <h1>Samsung Phones</h1>
+                
                 <label
                 htmlFor="" 
                 className="form-label">Product Photo</label>
                 <br />
                 <input 
                 type="file"
+                ref={fileinputref}
                 required className="form-control"
                 onChange={(e) => setproductPhoto(e.target.files[0])} 
                 />
@@ -123,7 +121,10 @@ const AddProducts = () => {
 
                 <button className="btn btn-primary">Add Product</button>
                 </form>
+
             </div>
+
+            <Footer/>
         </div>
      );
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import Navbar from "./Navbar";
 import {useEffect, useState } from "react";
-import { useNavigate , Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Footer from "./Footer"
 import Carousel from "./Carousel";
 
@@ -57,17 +57,7 @@ const GetProducts = () => {
             <Navbar/>
             
             
-            <nav className="m-4">
-                
-                <Link className="btn btn-dark mx-2" to = "/signin">sign in</Link>
-                <Link className="btn btn-dark mx-2" to = "/signup">signup</Link>
-                <Link className="btn btn-dark mx-2" to = "/addproducts">Add Products</Link>
-                <Link className="btn btn-dark mx-2" to = "/">Home</Link>
-
-                
-
-
-            </nav>
+            
             {/* carousel */}
             <Carousel/>
             
@@ -81,16 +71,16 @@ const GetProducts = () => {
             </div>
 
             {filteredProducts.map((product) => (
-                 <div className="col-md-3 justify-content-center-mb-4">
+                 <div className="col-md-3 justify-content-center-mb-4" id="bel">
                     
-                 <div className="card shadow">
+                 <div className="card shadow " id="name">
                      <img src={img_url + product.product_photo} className="product_img" alt="" />
-                     <div className="card-body">
+                     <div className="card-body ">
                          <h5 className="mt-2">{product.product_name}</h5>
                          <p className="text-primary">{product.product_desc.slice(0, 70)}</p>
                          <b className="text-info">{product.product_cost} Ksh</b><br />
                          
-                         <button className="btn btn-outline-dark w-40" onClick={() => navigate("/singleproduct" , {state : {product}})}>View Product</button>
+                         <button className="btn btn-outline-info w-40 id=" onClick={() => navigate("/singleproduct" , {state : {product}})}>View Product</button>
                      </div>
                  </div>
              </div>

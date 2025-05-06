@@ -8,13 +8,15 @@ import SignIn from './Components/SignIn';
 import AddProducts from './Components/AddProducts';
 import GetProducts from './Components/GetProducts';
 import SingleProduct from './Components/SingleProducts';
+
+
 function App() {
   return (
     <Router>
 
     <div className="App">
       <header className="App-header">
-        <h1>Welcome To The Modern World</h1>
+        <h1 >Welcome To The Modern World</h1>
         <h2>Smartphone Collection - Buy and Sell Online</h2>
       </header>
         <Routes>

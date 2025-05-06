@@ -1,50 +1,56 @@
-import { Link } from "react-router-dom";
+const Footer = () => {
+    return ( 
+        <div className= "">
+            <section class="row text-white bg-info p-4">
+                <div className="col-md-4">
+                    <h4 class="text-center">About Us</h4>
+                    <p>Our Phone is more than a device-it's our connection to the world , a tool that empowers us and keep us moving forward and a tool for learning,sharing and growing together</p>
+                    <p>Our phones is more than technology-its how we stay connected</p>
+                </div>
 
-// import { Link } from "react-router-dom";
-const Footer = ()=>{
-    return(
-        <div id="footer">
-            <div className="container-fluid">
-                <div className="row p-4 Footer">
-                    <div className="col-md-4 text-dark">
-                        <h4>SmartPhone Collection</h4>
-                        <p>Delivery is free</p>
-                    </div>
+                <div className="col-md-4">
+                    <h4 class = "text-center">Contact Us</h4>
+                    <form action="">
+                        <input 
+                        type="email"
+                        placeholder="Enter your Email"
+                        class="form-control" />
+                        <br/>
 
-                    <div className="col-md-4 text-dark">
-                        <h4 className="text-center">Stay Connected</h4>
-                        
-                        <Link to="https://facebook.com">
-                            <img src="images/download.png" width="50px" alt=""/>
-                        </Link>
-                        <Link to="https://instagram.com">
-                            <img src="images/download (12).jpeg" width="50px" alt=""/>
-                        </Link>
-    
-           
-                        <Link to="https://whatsapp.com">
-                            <img src="images/download (13).jpeg" width="50px" alt=""/>
-                        </Link>
-    
-            <p class="text-dark"></p>
-    
-                        
-                    
-                    </div>
+                        <textarea 
+                        name="" 
+                        id=""
+                        class="form-control"
+                        placeholder="Leave a Comment"
+                        rows="7"
+                        ></textarea>
+              
+                    </form>
+                </div>
 
-                    <div className="col-md-4">
-                        <h2>Find Us at</h2>
-                        <div><iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Westlands,%20Nairobi+(The%20Spice%20Haven)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/collections/drones/">The Spice Haven</a></iframe></div>
+                <div className="col-md-4">
+                    <h4 className="text-center">Stay Connected</h4><br />
+                    <a href="https://instagram.com">
+                    <img src="Images/download (12).jpeg" alt="" width="60px" />
+                    </a>
+                
 
-                    </div>
+                    <a href="https://facebook.com">
+                    <img src="Images/download.png" alt=""  width="60px"/>
+                    </a>
+
+                    <p class="text-dark">Our phones are revolutionized the way information and services are delivered quickly and efficient</p>
 
                 </div>
-                <footer className="text-white bg-dark text-center p-2">
-                    <h5  >Developed by L.Nafula &copy; 2025. All rights reserved. Terms and Conditions apply</h5>
-                </footer>
-            </div>
+            </section>
+            <footer className="text-white  bg-info text-center p-2">
+                <h4 >Smart.Fast.Always Connected</h4>
+                <h5>Developed by Lydia.N.w & copy;2025. All rights reserved</h5>
+            </footer>
+
+            
         </div>
-        
-    )
+     );
 }
+ 
 export default Footer;
