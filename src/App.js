@@ -8,6 +8,7 @@ import SignIn from './Components/SignIn';
 import AddProducts from './Components/AddProducts';
 import GetProducts from './Components/GetProducts';
 import SingleProduct from './Components/SingleProducts';
+import ContactUs from './Components/ContactUs';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path='/addproducts' element={<AddProducts/>}/>
           <Route path='/' element={<GetProducts/>}/>
           <Route path='/singleproduct' element={<SingleProduct/>}/>
+          <Route path="/contactus" element={<ContactUs />} /> {/* Add Route for Contact Us */}
           
 
         </Routes>

@@ -1,56 +1,61 @@
 import { Link, useNavigate } from "react-router-dom";
+import { FaMobileAlt } from "react-icons/fa"; // Import Smartphone Icon
 
 const Navbar = () => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const handlelogout = () => {
-        localStorage.clear();
-        Navigate("/signin");
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        navigate("/signin");
     }
-    return ( 
-        <div className="container-fluid">
-        <section class="row">
-            <div class="col-md-12">
-                <div class="navbar navbar-expand-md navbar-dark bg-info ms-auto">
-                    <Link to="Home" className="navbar-brand">Smartphone Collection</Link>
-                    <button class="navbar-toggler" data-bs-target="#nafula" data-bs-toggle="collapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="nafula">
-                        
-                         <div class="navbar-nav ">
-                            <Link to="/addProducts" class="nav-link">Add products</Link>
-                            <Link to="/" class="nav-link">Home</Link>
 
-                            <Link to="SignIn" class="nav-link"> Sign in</Link>
-                            <Link to="Signup" class="nav-link">Sign up</Link>
-                         </div>
-                         <div class="">
-                           {user && (
-                            <div className="navbar-nav ms-auto">
-                                <b className="text-success nav-link">Hello {user.username}</b>
-                                <button className="nav-link" onClick={handlelogout}>Logout</button>
+    return (
+        <div className="container-fluid p-0"> {/* Removing padding and margin */}
+            <nav className="navbar navbar-expand-md navbar-dark bg-info">
+                {/* Navbar brand with Smartphone Icon */}
+                <Link to="/" className="navbar-brand d-flex align-items-center">
+                    <FaMobileAlt
+                        style={{
+                            fontSize: "2rem",
+                            
+                            color: "#ff6f00",  // Vibrant color for the icon
+                            transition: "color 0.3s ease", // Smooth transition effect
+                        }}
+                        className="icon-hover"
+                    />
+                    Smartphone Collection
+                </Link>
 
-                            </div>
-                           )}
+                <button className="navbar-toggler" data-bs-target="#nafula" data-bs-toggle="collapse">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
 
-                           {!user && (
-                            <div className="navbar-nav ms-auto">
-                                <Link to="/signin" class="nav-link">Login</Link>
-                                <Link to="/signup" class="nav-link">Register</Link>
-                            </div>
-                           )}
-
-                         </div>
-
+                <div className="collapse navbar-collapse" id="nafula">
+                    <div className="navbar-nav">
+                        <Link to="/addProducts" className="nav-link">Add products</Link>
+                        <Link to="/" className="nav-link">Home</Link>
+                        <Link to="/contactus" className="nav-link">Contact Us</Link> {/* Link to Contact Us */}
+                        {!user && (
+                            <>
+                                <Link to="/signin" className="nav-link">Sign in</Link>
+                                <Link to="/signup" className="nav-link">Sign up</Link>
+                            </>
+                        )}
                     </div>
-                    
+
+                    <div className="navbar-nav ms-auto">
+                        {user && (
+                            <>
+                                <b className="text-success nav-link">Hello, {user.username}</b>
+                                <button className="nav-link btn btn-link" onClick={handleLogout}>Logout</button>
+                            </>
+                        )}
+                    </div>
                 </div>
-            </div>
-         </section>
+            </nav>
         </div>
-     );
+    );
 }
- 
+
 export default Navbar;

@@ -39,11 +39,11 @@ const SingleProduct = () => {
     return ( 
         <div>
 
-            <div className="row justify-content-center ">
+            <div className="row justify-content-center " >
             
             <Navbar/>
                 
-                    <div className="col-md-3 card shadow">
+                    <div className="col-md-3 card shadow" >
                         <img src={img_url + product.product_photo} alt="" />
                     </div>
 

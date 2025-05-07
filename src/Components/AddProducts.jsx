@@ -61,7 +61,7 @@ const AddProducts = () => {
 
     return ( 
         
-        <div className="row justify-content-center mt-4">
+        <div className="row justify-content-center ">
             
             <Navbar/>
 

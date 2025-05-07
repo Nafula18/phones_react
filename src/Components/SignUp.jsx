@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-const SignUp = () => {
-  // create variable
+import { FaUserPlus } from "react-icons/fa";  
 
+const SignUp = () => {
+  // Create variables
   let [username, setUsername] = useState("");
   let [email, setEmail] = useState("");
   let [phone, setPhone] = useState("");
@@ -29,7 +30,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      setLoading("Please waite while we submit your data");
+      setLoading("Please wait while we submit your data...");
       const data = new FormData();
       data.append("username", username);
       data.append("email", email);
@@ -47,14 +48,17 @@ const SignUp = () => {
       console.log(response);
     } catch (error) {
       setLoading("");
-      setError("something went wrong");
+      setError("Something went wrong");
     }
   };
 
   return (
     <div className="row justify-content-center mt-4">
-      <div className="col-md-6 card shadow p-4">
-        <h2>Sign Up</h2>
+      <div className="col-md-6 card shadow p-4" id="densel">
+        <div className="text-center mb-4">
+          <FaUserPlus style={{ fontSize: "3rem", color: "#007bff" }} /> {/* Sign-up Icon */}
+        </div>
+        <h2 className="text-center">Sign Up</h2>
         <b className="text-danger">{error}</b>
         <b className="text-warning">{loading}</b>
         <b className="text-success">{success}</b>
@@ -75,7 +79,6 @@ const SignUp = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <br />
-
           <input
             type="tel"
             required
@@ -94,14 +97,14 @@ const SignUp = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <span className="input-group-text" onClick={togglePassword}>
-              <i className="bi bi-eye-slash"></i>
+              <i className="bi bi-eye-slash"></i> {/* Eye slash icon */}
             </span>
           </div>
           <br />
-          <button className="btn btn-primary">Sign Up</button>
+          <button className="btn btn-primary w-80 rounded-pill">Sign Up</button>
         </form>
-        <p>
-          Already have an account? <Link to="/signin"> Sign In</Link>
+        <p className="text-center">
+          Already have an account? <Link to="/signin">Sign In</Link>
         </p>
       </div>
     </div>
