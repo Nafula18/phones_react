@@ -48,14 +48,14 @@ const ContactUs = () => {
         <div className="container ">
             <Navbar/>
             <h2 className="text-center text-info">Contact Us</h2>
-            <div className="text-center">
+            <div className="text-center text-info">
                 <p>We'd love to hear from you! Please fill out the form below.</p>
             </div>
 
-            <div className="row justify-content-center">
+            <div className="row justify-content-center ">
                 <div className="col-md-6">
                     {/* Contact Form inside a Bootstrap Card with Shadow */}
-                    <div className="card shadow-lg p-4">
+                    <div className="card shadow-lg p-4"id="bel">
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <label className="form-label">Your Name</label>
@@ -95,7 +95,7 @@ const ContactUs = () => {
                             {success && <div className="text-success">{success}</div>}
 
                             <div className="text-center mt-3">
-                                <button type="submit" className="btn btn-info">
+                                <button type="submit" className="btn btn-info rounded-pill">
                                     Submit
                                 </button>
                             </div>
@@ -109,7 +109,7 @@ const ContactUs = () => {
                 <p>
                     <strong>Email:</strong> www.smartphones.com <br />
                     <strong>Phone:</strong> +254707137381 <br />
-                    <strong>Address:</strong> Tom Mboya Street, Nairobi City, Kenya <span role="img" aria-label="kenya-flag">🇰🇪</span>
+                    <strong>Address:</strong> Westlands, Nairobi City, Kenya <span role="img" aria-label="kenya-flag">🇰🇪</span>
                 </p>
             </div>
         </div>

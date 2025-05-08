@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaUserPlus } from "react-icons/fa";  
+import { FaUserPlus } from "react-icons/fa";
 
 const SignUp = () => {
-  // Create variables
+  // State variables
   let [username, setUsername] = useState("");
   let [email, setEmail] = useState("");
   let [phone, setPhone] = useState("");
@@ -12,20 +12,14 @@ const SignUp = () => {
   let [loading, setLoading] = useState("");
   let [success, setSuccess] = useState("");
   let [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
+  // Toggle password visibility function
   const togglePassword = () => {
-    const pdinput = document.getElementById("password");
-    let type = pdinput.getAttribute("type");
-
-    if (type === "password") {
-      type = "text";
-    } else {
-      type = "password";
-    }
-
-    pdinput.setAttribute("type", type);
+    setShowPassword(!showPassword);
   };
 
+  // Handle form submission
   const submitForm = async (e) => {
     e.preventDefault();
 
@@ -44,7 +38,6 @@ const SignUp = () => {
 
       setLoading("");
       setSuccess(response.data.success);
-
       console.log(response);
     } catch (error) {
       setLoading("");
@@ -89,7 +82,7 @@ const SignUp = () => {
           <br />
           <div className="input-group">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"} // Toggle visibility based on state
               required
               id="password"
               placeholder="Enter Password"
@@ -97,7 +90,7 @@ const SignUp = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <span className="input-group-text" onClick={togglePassword}>
-              <i className="bi bi-eye-slash"></i> {/* Eye slash icon */}
+              <i className={`bi ${showPassword ? "bi-eye" : "bi-eye-slash"}`}></i> 
             </span>
           </div>
           <br />

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Carousel from "./Carousel";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaShoppingCart } from "react-icons/fa"; // Cart icon
 import { Spinner } from 'react-bootstrap'; 
 
 const GetProducts = () => {
@@ -12,17 +12,17 @@ const GetProducts = () => {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState(1); // Tracks the current page
-    const [hasMore, setHasMore] = useState(true); // Determines if there are more products to load
+    const [page, setPage] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
+    const [cart, setCart] = useState([]); // Cart state to track added products
 
     const img_url = "https://Lido.pythonanywhere.com/static/images/";
     const navigate = useNavigate();
 
-    // Function to get products with pagination support
+    // Fetch products with pagination
     const getProducts = async (pageNumber) => {
-        setLoading(true); // Show loading spinner
+        setLoading(true);
         setError("");
-
         try {
             const response = await axios.get(`https://Lido.pythonanywhere.com/api/getproducts?page=${pageNumber}`);
             const newProducts = response.data;
@@ -30,12 +30,12 @@ const GetProducts = () => {
                 setProducts((prevProducts) => [...prevProducts, ...newProducts]);
                 setFilteredProducts((prevProducts) => [...prevProducts, ...newProducts]);
             } else {
-                setHasMore(false); // No more products to load
+                setHasMore(false);
             }
         } catch (error) {
             setError("Something went wrong. Please try again later.");
         } finally {
-            setLoading(false); // Hide the spinner when done
+            setLoading(false);
         }
     };
 
@@ -45,6 +45,16 @@ const GetProducts = () => {
             product.product_name.toLowerCase().includes(value.toLowerCase())
         );
         setFilteredProducts(filtered);
+    };
+
+    // Add product to cart
+    const addToCart = (product) => {
+        setCart((prevCart) => [...prevCart, product]); // Adds the selected product to the cart
+    };
+
+    // View the cart (redirect to the cart page)
+    const viewCart = () => {
+        navigate("/cart", { state: { cart } });
     };
 
     useEffect(() => {
@@ -69,6 +79,16 @@ const GetProducts = () => {
 
             {/* Carousel */}
             <Carousel />
+
+            {/* Cart Icon */}
+            <div className="cart-icon-container" style={{ position: "absolute", top: 20, right: 20 }}>
+                <button className="btn btn-outline-dark" onClick={viewCart}>
+                    <FaShoppingCart />
+                    {cart.length > 0 && (
+                        <span className="badge badge-pill badge-danger">{cart.length}</span>
+                    )}
+                </button>
+            </div>
 
             {/* Search Input */}
             <div className="row justify-content-center m-3">
@@ -103,6 +123,14 @@ const GetProducts = () => {
                                     >
                                         View Product
                                         <FaHeart className="ml-2" style={{ color: "red", fontSize: "1.2em" }} />
+                                    </button>
+                                    {/* Add to Cart Button */}
+                                    <br /><br /><hr />
+                                    <button
+                                        className="btn btn-outline-info w-80 h-80 rounded-pill"
+                                        onClick={() => addToCart(product)}
+                                    >
+                                        Add to Cart
                                     </button>
                                 </div>
                             </div>

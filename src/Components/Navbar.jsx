@@ -33,9 +33,11 @@ const Navbar = () => {
 
                 <div className="collapse navbar-collapse" id="nafula">
                     <div className="navbar-nav">
-                        <Link to="/addProducts" className="nav-link">Add products</Link>
+                        <Link to="/addProducts" className="nav-link" >Add products</Link>
                         <Link to="/" className="nav-link">Home</Link>
-                        <Link to="/contactus" className="nav-link">Contact Us</Link> {/* Link to Contact Us */}
+                        <Link to="/contactus" className="nav-link">Contact Us</Link> 
+                        {/* Link to Contact Us */}
+                        <Link to="/Cart" className="nav-link">Cart</Link> 
                         {!user && (
                             <>
                                 <Link to="/signin" className="nav-link">Sign in</Link>
